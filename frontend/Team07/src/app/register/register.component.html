@@ -1,0 +1,130 @@
+    <h2 align="center">
+    <img src="https://sv1.picz.in.th/images/2019/01/24/TS6xHy.png" width="200" height="200">
+
+  </h2>
+    <h2 align="center">Welcome To YaMaii</h2>
+    <h2 align="center">ร้านยามั้ย ยินดีต้อนรับ</h2>
+    <h2 align="center">สมัครสมาขิก</h2>
+
+    <mat-card-actions align="center">
+
+        <a mat-stroked-button routerLink="/home"><mat-icon>home</mat-icon>ไปหน้าหลัก</a>
+  
+        <a mat-stroked-button routerLink="/">คลังยา</a>
+  
+        <a mat-stroked-button routerLink="/">จัดเก็บข้อมูลยา</a>
+  
+        <a mat-stroked-button routerLink="/">จัดการพนักงาน</a>
+  
+        <a mat-stroked-button routerLink="/">บันทึกการใช้ยา</a>
+        <a mat-stroked-button routerLink="/">สมัครสมาชิก</a>
+  
+         <!-- <a mat-stroked-button routerLink="/home">ติดต่อร้าน</a>
+  
+        <a mat-stroked-button routerLink="/bill">จัดการคลังสินค้า</a> -->
+  
+        <a mat-stroked-button routerLink="">ออกจากระบบ</a>
+  
+  
+      </mat-card-actions>
+
+      
+
+  
+
+    
+    <mat-card class="register-all">
+
+  <form class="example-form">
+
+    <table class="example-first-last" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-select placeholder="Initial" [(ngModel)]="data.initial" [(ngModel)]="customers.initialSelect" name="initial" #initial>
+                      <mat-option *ngFor="let initial of initials" [value]="initial.name">
+                        {{initial.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </td>
+          </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-first-last ">
+            <input matInput placeholder="Name" [(ngModel)]="data.firstname"required name="Firstname" #Firstname>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+            <mat-form-field>
+                <mat-select placeholder="Gender" [(ngModel)]="data.gender" [(ngModel)]="customers.genderSelect" name="gender" #gender>
+                  <mat-option *ngFor="let gender of genders" [value]="gender.sex">
+                    {{gender.sex}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </td>
+
+        <td>
+          <mat-form-field>
+              <mat-select placeholder="BloodType" [(ngModel)]="data.bloodType" [(ngModel)]="customers.bloodTypeSelect" name="bloodType" #bloodType>
+                <mat-option *ngFor="let bloodType of bloodTypes" [value]="bloodType.name">
+                  {{bloodType.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+      </td>
+      </tr>
+      <tr>
+
+        <td>
+          <mat-form-field class="example-first-last ">
+            <input matInput placeholder="Address" [(ngModel)]="data.address" required name="Address" #Address>
+          </mat-form-field>
+        </td>
+        
+      </tr>
+
+  
+      <tr>
+        <td>
+          <mat-form-field class="example-first-last ">
+            <input matInput placeholder="Phonenumber" [(ngModel)]="data.phonenumber" required name="Phonenumber"
+              #Phonenumber>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-first-last ">
+            <input matInput placeholder="Username" [(ngModel)]="data.username" required name="Username" #Username>
+          </mat-form-field>
+        </td>
+      </tr>
+     
+      <tr>
+        <td>
+          <mat-form-field class="example-first-last ">
+            <input matInput placeholder="Password" type="password" [(ngModel)]="data.password" required name="Password"
+              #Password>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      
+    </table>
+  </form>
+
+  <mat-card-actions align="end">
+
+    <button mat-raised-button color="warn" (click)="SubmitdData()">Sign Up</button>
+    <a mat-stroked-button routerLink="">Cancle</a>
+
+  </mat-card-actions>
+
+</mat-card>
