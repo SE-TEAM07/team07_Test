@@ -6,4 +6,13 @@ import SUT.SE61.Team07.Entity.*;
 
 @RepositoryRestResource
 public interface StaffRepository extends JpaRepository<Staff, Long> {
+    Staff findByStaffId(Long staffId);
+
+    Staff findByStaffUser(String staffUser);
+
+    Staff findByStaffPass(String staffPass);
+    
 }
+
+
+

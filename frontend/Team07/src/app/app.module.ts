@@ -1,19 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { RoutingMainModule } from "./routing-main/routing-main.module";
-import { RouterModule } from '@angular/router';
-
-// user import 
-import { DrugComponent } from './drug/drug.component';
-import { LoginStaffComponent } from './login-staff/login-staff.component';
-// end user import 
-
-// system import 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule, MatNativeDateModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -23,7 +14,10 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -39,20 +33,60 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-// end system import 
+import { HttpClientModule } from '@angular/common/http';
+
+import { RoutingMainModule } from "./routing-main/routing-main.module";
+
+// PEAK
+import { LoginUserComponent } from './loginuser/loginuser.component';
+import { HomeComponent } from './home/home.component';
+
+
+//PEAK
+
+//John
+import { AppserviceService } from './Service/appservice.service';
+
+
+import { InputdrugstroageService } from './Service/inputdrugstroage.service';
+// BOW
+
+import { RegisterService } from './Service/register.service';
+import { RegisterComponent } from './register/register.component';
+import { RegisterShowComponent } from './register-show/register-show.component';
+import { LoginStaffComponent } from './login-staff/login-staff.component';
+import { DrugStorageMenuComponent } from './drug-storage-menu/drug-storage-menu.component';
+import { PostComponent } from './post/post.component';
+import { ShowComponent } from './show/show.component';
+import { PostService } from './Service/post.service';
+
+import { DrugdataComponent } from './Drugdata/drugdata.component';
+import { MedicineService } from './Service/medicine.service';
+
+import { CategoryService } from './Service/category.service';
+import { RedcordUseComponent } from './redcord-use/redcord-use.component';
+//BOW
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DrugComponent,
-    LoginStaffComponent
+    AppComponent,LoginUserComponent,HomeComponent,
+    RegisterComponent,
+    RegisterShowComponent,
+    LoginStaffComponent,
+    DrugStorageMenuComponent,
+    DrugdataComponent,
+    PostComponent,
+    ShowComponent,
+    RedcordUseComponent,
   ],
   imports: [
+    RoutingMainModule,
     HttpClientModule,
     BrowserModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     MatCheckboxModule,
-    MatCheckboxModule, 
+    MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -84,12 +118,13 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatNativeDateModule,
     FormsModule,
-    RoutingMainModule,
-    RouterModule
-    
-    
+
+
+
+
+
   ],
-  providers: [],
+providers: [AppserviceService,RegisterService,MedicineService,CategoryService,InputdrugstroageService,PostService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

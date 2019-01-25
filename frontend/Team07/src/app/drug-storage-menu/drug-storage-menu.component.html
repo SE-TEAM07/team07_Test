@@ -1,0 +1,93 @@
+<h2 align="center">Welcome To YaMaii</h2>
+<h2 align="center">ร้านยามั้ย ยินดีต้อนรับ</h2>
+
+<mat-card>
+
+  <div class="button-row" align="center">
+
+    <mat-card-actions>
+
+      <a mat-stroked-button routerLink="/home">
+        <mat-icon>home</mat-icon>ไปหน้าหลัก
+      </a>
+
+      <a mat-stroked-button routerLink="/">คลังยา</a>
+
+      <a mat-stroked-button routerLink="/">จัดเก็บข้อมูลยา</a>
+
+      <a mat-stroked-button routerLink="/">จัดการพนักงาน</a>
+
+      <a mat-stroked-button routerLink="/">บันทึกการใช้ยา</a>
+
+      <!-- <a mat-stroked-button routerLink="/home">ติดต่อร้าน</a>
+
+      <a mat-stroked-button routerLink="/bill">จัดการคลังสินค้า</a> -->
+
+      <a mat-stroked-button routerLink="">ออกจากระบบ</a>
+
+
+    </mat-card-actions>
+
+  </div>
+
+</mat-card>
+
+<body>
+  <div class="flex-container">
+    <mat-tab-group>
+      <mat-tab label="นำยาเข้าคลัง">
+        <div class="flex-container">
+          <form align = "center">
+            <h2>กรอกรายละเอียดข้อมูลยา</h2>
+
+
+
+            <mat-form-field>
+              <h4>ประเภท</h4>
+              <mat-select [(ngModel)]="categoryselect"name="Dran">
+                <mat-option *ngFor="let titlecat of category" [value]="titlecat.categoryname">
+                  {{titlecat.categoryname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+             <br>
+            <br>
+            <mat-form-field>
+              <h4>ชื่อยา:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.namedrug" required name="namedrug" #namedrug>
+            </mat-form-field><br>
+
+
+
+
+
+            <pre align="center">
+                  <button mat-raised-button color="primary"  (click)="sumbitData()">บันทึก</button>
+                </pre>
+          </form>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="รายชื่อยาที่มีในคลัง">
+        <div class="flex-container">
+          <h2>รอทำ </h2>
+        </div>
+      </mat-tab>
+      <!--   
+      <mat-tab label="ดูข้อมูลยา"> 
+        <div class="flex-container">
+          ดูข้อมูลยา 
+        </div>
+      </mat-tab>
+    -->
+    </mat-tab-group>
+  </div>
+</body>
+
+<p align="center">
+  <B>YamaiiShop@gmail.com</B>
+</p>
+
+<p align="center">
+  <B>Tel: +66123456789</B>
+</p>
