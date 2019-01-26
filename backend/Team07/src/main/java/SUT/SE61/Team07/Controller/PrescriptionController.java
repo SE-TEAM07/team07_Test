@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 import SUT.SE61.Team07.Repository.*;
 import SUT.SE61.Team07.Entity.*;
 
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -38,7 +37,6 @@ class PrescriptionController {
         this.categoryrepository = categoryrepository;
     }
 
-
     @GetMapping("/Stroage-prescription")
     public Collection<Prescription> prescriptions() {
         return prescriptionrepository.findAll().stream().collect(Collectors.toList());
@@ -46,14 +44,15 @@ class PrescriptionController {
 
     @PostMapping("/Prescription-insert/nameprescription/{nameprescription}/CategoryId/{CategoryId}/DrugId/{DrugId}/staffId/{staffId}")
     public ResponseEntity<Map<String, Object>> Drugsumbit(@PathVariable("nameprescription") String nameprescription,
-            @PathVariable("CategoryId") Long CategoryId,@PathVariable("DrugId") Long DrugId,@PathVariable("staffId") Long staffId) {
+            @PathVariable("CategoryId") Long CategoryId, @PathVariable("DrugId") Long DrugId,
+            @PathVariable("staffId") Long staffId) {
         try {
 
             Drug D = this.drugrepository.findByDrugId(DrugId);
             Staff S = this.staffrepository.findByStaffId(staffId);
             Category C = this.categoryrepository.findByCategoryId(CategoryId);
 
-            this.prescriptionrepository.save(new Prescription(nameprescription,C,D,S));
+            this.prescriptionrepository.save(new Prescription(nameprescription, C, D, S));
 
             Map<String, Object> json = new HashMap<String, Object>();
             json.put("success", true);

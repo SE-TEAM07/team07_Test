@@ -38,10 +38,10 @@ export class DrugStorageMenuComponent implements OnInit {
 
   sumbitData() {
 
-    this.inputdrugstroageService.summbituyPrescription(String(this.data.namepre),Number(this.categoryselect),Number(this.categoryselect),Number(this.preId) ).subscribe(data => {
+    this.inputdrugstroageService.summbituyPrescription(String(this.data.namepre), Number(this.categoryselect), Number(this.categoryselect), Number(this.preId)).subscribe(data => {
       console.log(this.data)
     })
-  
+
   }
 
 
@@ -54,17 +54,17 @@ export class DrugStorageMenuComponent implements OnInit {
     })
     this.categoryService.getCategory().subscribe(data => {
       this.category = data;
-     // console.log(this.category)
+      // console.log(this.category)
     })
 
     this.pre.getPrescription().subscribe(data => {
       this.prescription = data;
       this.preId = this.prescription.length;
-     // console.log(this.preId)
+      // console.log(this.preId)
     })
     this.drugService.getDrug().subscribe(data => {
       this.drug = data;
-    //  console.log(this.drug)
+      //  console.log(this.drug)
     })
 
 

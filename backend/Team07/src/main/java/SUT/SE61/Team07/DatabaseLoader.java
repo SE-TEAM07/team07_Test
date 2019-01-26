@@ -61,11 +61,12 @@ public class DatabaseLoader implements ApplicationRunner {
         /*
          * john db loader
          */
-        this.drugrepository.save(new Drug("para"));
+        this.drugrepository.save(new Drug("para1"));
         this.drugrepository.save(new Drug("para2"));
         this.drugrepository.save(new Drug("para3"));
         this.drugrepository.save(new Drug("para4"));
         this.drugrepository.save(new Drug("para5"));
+        this.drugrepository.save(new Drug("para6"));
         Drug D1 = this.drugrepository.findByDrugId(1L);
         this.categoryrepository.save(new Category("ABC1"));
         this.categoryrepository.save(new Category("ABC2"));
@@ -73,14 +74,16 @@ public class DatabaseLoader implements ApplicationRunner {
         this.categoryrepository.save(new Category("ABC4"));
         this.categoryrepository.save(new Category("ABC5"));
         
+        this.categoryrepository.save(new Category("ABC6"));
+
         Category C1 = this.categoryrepository.findByCategoryId(1L);
-        this.staffrepository.save(new Staff(De1,"Bancha", "john", "exx", "0802457192"));
-        this.staffrepository.save(new Staff(De1,"Banchon", "Luy", "kk1234", "0900030004"));
-        this.staffrepository.save(new Staff(De1,"warsom", "physics", "II", "0832781846"));
-        this.staffrepository.save(new Staff(De1,"watsmon", "joy", "kkk", "0801231234"));
-        this.staffrepository.save(new Staff(De1,"ahmouy", "mouy", "gg1234", "0960050004"));
+        this.staffrepository.save(new Staff(De1, "Bancha", "john", "exx", "0802457192"));
+        this.staffrepository.save(new Staff(De1, "Banchon", "Luy", "kk1234", "0900030004"));
+        this.staffrepository.save(new Staff(De1, "warsom", "physics", "II", "0832781846"));
+        this.staffrepository.save(new Staff(De1, "watsmon", "joy", "kkk", "0801231234"));
+        this.staffrepository.save(new Staff(De1, "ahmouy", "mouy", "gg1234", "0960050004"));
         Staff S1 = this.staffrepository.findByStaffId(1L);
-        this.prescriptionrepository.save(new Prescription("namepre1",C1,D1,S1));
+        this.prescriptionrepository.save(new Prescription("namepre1", C1, D1, S1));
         /* end john db loader */
 
         /* bow db loader */
@@ -110,7 +113,7 @@ public class DatabaseLoader implements ApplicationRunner {
         this.worktimerepository.save(new Worktime("9:00-17:00", 8));
         this.worktimerepository.save(new Worktime("9:00-22:00", 13));
         Worktime W1 = this.worktimerepository.findBytimeId(1L);
-        this.showHrsrepository.save(new ShowHrs(  S1,De1,W1));
+        this.showHrsrepository.save(new ShowHrs(S1, De1, W1));
         /* end pam dbloader */
 
         /* gan db loader */
@@ -123,7 +126,7 @@ public class DatabaseLoader implements ApplicationRunner {
         Medicine M1 = this.medicinerepository.findBymedicineId(1L);
         this.drugdatarepository.save(new Drugdata("name1", D1, S1, C1, M1));
         /* end gan dbloader */
-        
+
         /* frame db loader */
         Drugdata Dru1 = this.drugdatarepository.findByDrugdataId(1L);
         Customer Cu1 = this.customerrepository.findByCustomerId(1L);
