@@ -20,6 +20,8 @@ import SUT.SE61.Team07.Repository.*;
 import SUT.SE61.Team07.Entity.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 class RecordDrugUseController {
     private RecordDrugUseRepository recordDrugUserepository;
 

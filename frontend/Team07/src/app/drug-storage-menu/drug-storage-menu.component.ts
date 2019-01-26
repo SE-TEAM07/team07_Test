@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { CategoryService } from '../Service/category.service';
 import { Router } from "@angular/router";
 import { InputdrugstroageService } from '../Service/inputdrugstroage.service';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { DrugService } from '../Service/drug.service';
+
+import { PrescriptionService } from '../Service/prescription.service';
 
 @Component({
   selector: 'app-drug-storage-menu',
@@ -12,45 +15,60 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DrugStorageMenuComponent implements OnInit {
 
-  category : Array<any>;
-  categoryselect ='';
+  category: Array<any>;
+  prescription: Array<any>;
+  drug: Array<any>;
+  drugselect = '';
+  categoryselect = '';
+  preId: any;
+  data: any = {}
+  datas: any = {}
 
-  data :any ={}
-  datas :any ={}
-  constructor(private route:ActivatedRoute,private router:Router,private categoryService: CategoryService, private httpClient: HttpClient,private inputdrugstroageService : InputdrugstroageService) { }
+  constructor(private drugService: DrugService, private route: ActivatedRoute, private router: Router, private categoryService: CategoryService, private httpClient: HttpClient, private inputdrugstroageService: InputdrugstroageService, private pre: PrescriptionService) { }
 
-  showdata(){
-    console.log(this.data.namedrug)
-    console.log(this.categoryselect)
+  showdata() {
+
+    console.log("namepre" + " = " + this.data.namepre)
+    console.log("drugId" + " = " + this.drugselect)
+    console.log("categoryId" + " = " + this.categoryselect)
+
+    console.log("staffId" + " = " + this.preId)
+
   }
 
-  sumbitData(){
-  this.inputdrugstroageService.sumbittycategory(Number(1),String(this.data.namedrug)).subscribe(data=>{
-    console.log(this.data)
+  sumbitData() {
 
-    this.inputdrugstroageService.sumbittyDrug(Number(1),String(this.categoryselect)).subscribe(data=>{
+    this.inputdrugstroageService.summbituyPrescription(String(this.data.namepre),Number(this.categoryselect),Number(this.categoryselect),Number(this.preId) ).subscribe(data => {
       console.log(this.data)
     })
-
-    this.inputdrugstroageService.summbituyPrescription(Number(1),String(this.categoryselect)).subscribe(data=>{
-      console.log(this.data)
-    })
-
-  })
   
   }
 
- 
+
+
 
   ngOnInit() {
-    this.route.params.subscribe(prams=>{
+    this.route.params.subscribe(prams => {
       this.datas = prams
       console.log(prams)
     })
-    this.categoryService.getCategory().subscribe(data=>{
+    this.categoryService.getCategory().subscribe(data => {
       this.category = data;
-      console.log(this.category)
+     // console.log(this.category)
     })
+
+    this.pre.getPrescription().subscribe(data => {
+      this.prescription = data;
+      this.preId = this.prescription.length;
+     // console.log(this.preId)
+    })
+    this.drugService.getDrug().subscribe(data => {
+      this.drug = data;
+    //  console.log(this.drug)
+    })
+
+
+
   }
 
 }

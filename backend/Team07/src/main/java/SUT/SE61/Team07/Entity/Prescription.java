@@ -31,19 +31,20 @@ public class Prescription {
 	private Staff staff;
 		  
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Type", nullable = true)
+    @JoinColumn(name = "category", nullable = true)
 	private Category  category;
 
     private Prescription() {
     }
 
 
-    public Prescription(String name,Drug drug,Staff staff,Category category) {
+    public Prescription(String name,Category category,Drug drug,Staff staff) {
         
         this.name = name;
+        this.category = category;
         this.drug = drug;
         this.staff = staff;
-        this.category = category;
+       
         this.date = LocalDate.now();
     }
 

@@ -80,7 +80,7 @@ public class DatabaseLoader implements ApplicationRunner {
         this.staffrepository.save(new Staff(De1,"watsmon", "joy", "kkk", "0801231234"));
         this.staffrepository.save(new Staff(De1,"ahmouy", "mouy", "gg1234", "0960050004"));
         Staff S1 = this.staffrepository.findByStaffId(1L);
-        this.prescriptionrepository.save(new Prescription("name1", D1, S1, C1));
+        this.prescriptionrepository.save(new Prescription("namepre1",C1,D1,S1));
         /* end john db loader */
 
         /* bow db loader */
