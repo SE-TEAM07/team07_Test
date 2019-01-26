@@ -19,18 +19,14 @@ import java.util.stream.Collectors;
 import SUT.SE61.Team07.Repository.*;
 import SUT.SE61.Team07.Entity.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 
 class CustomerController {
 
-    @Autowired
     private CustomerRepository customerRepository;
-    @Autowired
     private InitialRepository initialRepository;
-    @Autowired
     private GenderRepository genderRepository;
-    @Autowired
     private BloodTypeRepository bloodTypeRepository;
 
     public CustomerController(CustomerRepository customerRepository) {
@@ -58,7 +54,6 @@ class CustomerController {
     }
 
     @PostMapping("/Customer/customeruserID/{customeruserID}/customerPassword/{customerPassword}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Map<String, Object>> customercheck(@PathVariable("customeruserID") String customeruserID,
             @PathVariable("customerPassword") String customerPassword) {
         Customer cusUID = this.customerRepository.findBycustomerUserID(customeruserID);
@@ -88,7 +83,6 @@ class CustomerController {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/Customer-insert/initalId/{initalId}/genderId/{genderId}/bloodTypeId/{bloodTypeId}/name/{name}/address/{address}/phonenumber/{phonenumber}/username/{username}/password/{password}")
     public ResponseEntity<Map<String, Object>> Customersumbit(@PathVariable("initalId") Long initalId,
             @PathVariable("genderId") Long genderId, @PathVariable("bloodTypeId") Long bloodTypeId,
@@ -98,9 +92,9 @@ class CustomerController {
 
         try {
 
-            Initial I = this.initialRepository.findByInitialId(initalId); //Select
-            Gender G = this.genderRepository.findByGenderId(genderId); //Select
-            BloodType B = this.bloodTypeRepository.findByBloodTypeId(bloodTypeId);//Select
+            Initial I = this.initialRepository.findByInitialId(initalId); // Select
+            Gender G = this.genderRepository.findByGenderId(genderId); // Select
+            BloodType B = this.bloodTypeRepository.findByBloodTypeId(bloodTypeId);// Select
 
             this.customerRepository.save(new Customer(I, names, G, B, address, phonenumber, username, password));
 
@@ -121,7 +115,7 @@ class CustomerController {
             json.put("status", "save-false");
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Type", "application/json; charset=UTF-8"); 
+            headers.add("Content-Type", "application/json; charset=UTF-8");
             headers.add("X-Fsl-Location", "/");
             headers.add("X-Fsl-Response-Code", "500");
             return (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.INTERNAL_SERVER_ERROR));
@@ -130,5 +124,3 @@ class CustomerController {
 
     }
 }
-
-

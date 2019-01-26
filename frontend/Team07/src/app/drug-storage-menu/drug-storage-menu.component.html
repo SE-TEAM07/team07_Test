@@ -39,13 +39,19 @@
         <div class="flex-container">
           <form align = "center">
             <h2>กรอกรายละเอียดข้อมูลยา</h2>
+            <br>
+            <mat-form-field>
+              <h4>ชื่อใบสั่งยา:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.namepre" required name="namepre" #namepre>
+            </mat-form-field><br>
+
 
 
 
             <mat-form-field>
               <h4>ประเภท</h4>
               <mat-select [(ngModel)]="categoryselect"name="Dran">
-                <mat-option *ngFor="let titlecat of category" [value]="titlecat.categoryname">
+                <mat-option *ngFor="let titlecat of category" [value]="titlecat.categoryId">
                   {{titlecat.categoryname}}
                 </mat-option>
               </mat-select>
@@ -53,9 +59,13 @@
              <br>
             <br>
             <mat-form-field>
-              <h4>ชื่อยา:</h4>
-              <input matInput placeholder="" [(ngModel)]="data.namedrug" required name="namedrug" #namedrug>
-            </mat-form-field><br>
+              <h4>เลือกยา</h4>
+              <mat-select [(ngModel)]="drugselect"name="Dranss">
+                <mat-option *ngFor="let titledrug of drug" [value]="titledrug.drugId">
+                  {{titledrug.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
 
 
