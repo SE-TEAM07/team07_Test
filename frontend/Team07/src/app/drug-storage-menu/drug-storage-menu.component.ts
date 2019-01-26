@@ -54,7 +54,7 @@ export class DrugStorageMenuComponent implements OnInit {
     })
     this.categoryService.getCategory().subscribe(data => {
       this.category = data;
-      // console.log(this.category)
+      console.log(this.category)
     })
 
     this.pre.getPrescription().subscribe(data => {
@@ -64,7 +64,7 @@ export class DrugStorageMenuComponent implements OnInit {
     })
     this.drugService.getDrug().subscribe(data => {
       this.drug = data;
-      //  console.log(this.drug)
+      console.log(this.drug)
     })
 
 
