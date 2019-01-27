@@ -70,6 +70,9 @@ import { RedcordUseComponent } from './redcord-use/redcord-use.component';
 import { PrescriptionService } from './Service/prescription.service';
 import { DrugService } from './Service/drug.service';
 
+
+import { RedcorduseService } from './Service/redcorduse.service';
+
 @NgModule({
   declarations: [
     AppComponent,LoginUserComponent,HomeComponent,
@@ -126,7 +129,7 @@ import { DrugService } from './Service/drug.service';
 
 
   ],
-providers: [AppserviceService,DrugService,RegisterService,MedicineService,CategoryService,InputdrugstroageService,PostService,PrescriptionService],
+providers: [AppserviceService,RedcorduseService,DrugService,RegisterService,MedicineService,CategoryService,InputdrugstroageService,PostService,PrescriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

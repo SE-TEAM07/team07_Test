@@ -1,47 +1,57 @@
+
 package SUT.SE61.Team07.Controller;
 
-import SUT.SE61.Team07.Entity.*;
-import SUT.SE61.Team07.Repository.*;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import SUT.SE61.Team07.Repository.*;
+import SUT.SE61.Team07.Entity.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 
-public class DrugdataController {
-    private DrugdataRepository drugdataRepository;
-    private StaffRepository staffRepository;
-    private MedicineRepository medicineRepository;
-    private CategoryRepository categoryRepository;
+ class DrugdataController {
+    private DrugdataRepository drugdatarepository;
+    private StaffRepository staffrepository;
+    private MedicineRepository medicinerepository;
+    private CategoryRepository categoryrepository;
+
+    public DrugdataController(DrugdataRepository drugdatarepository, StaffRepository staffrepository,
+    MedicineRepository medicinerepository, CategoryRepository categoryrepository) {
+        this.drugdatarepository = drugdatarepository;
+        this.staffrepository = staffrepository;
+        this.medicinerepository = medicinerepository;
+        this.categoryrepository = categoryrepository;
+    }
 
     @GetMapping("/Drugdata-list")
     public Collection<Drugdata> items() {
-        return drugdataRepository.findAll();
+        return drugdatarepository.findAll();
     }
 
     @GetMapping("/Drugdata/{dataID}")
     public Optional<Drugdata> takeinMedicineDataByid(@PathVariable Long dataID) {
-        return drugdataRepository.findById(dataID);
+        return drugdatarepository.findById(dataID);
     }
 
     @GetMapping("/Medicine")
     public Collection<Medicine> Medicine() {
-        return medicineRepository.findAll();
+        return medicinerepository.findAll();
     }
 
     @GetMapping("/Medicine/{medicineId}")
     public Optional<Medicine> takeinMedicineByid(@PathVariable Long medicineId) {
-        return medicineRepository.findById(medicineId);
+        return medicinerepository.findById(medicineId);
     }
 
     /*
