@@ -24,36 +24,78 @@ export class RedcordUseComponent implements OnInit {
   genderselect = '';
   bloodtypes: Array<any>;
   bloodtypeselect = '';
-  customer: Array<any>;
-  customerselect = '';
+
+  customer = {
+    customerId: Number, customerName: String, customerPhonenumber: String,
+    customerAddress: String, customerUserID: String, customerPassword: String,
+    initial: { initialId: Number, name: String },
+    gender: { genderId: Number, sex: String },
+    bloodType: { bloodTypeId: Number, name: Number }
+  };  // customer by name 
+  //customerselect = '';
+
+
+
 
   data: any = {}
-  datas: any = {}
+
 
   constructor(private route: ActivatedRoute, private redcorduseservice: RedcorduseService, private registerservice: RegisterService, private router: Router, private categoryservice: CategoryService, private httpClient: HttpClient) { }
+  
+  
+  
+  SaveRedcord() {
+   // console.log(this.data.symptom)
+   // console.log(this.categoryselect)
+
+    this.redcorduseservice.postRedcorduse(String(this.data.symptom), Number(this.categoryselect), Number(1), Number(this.customer.customerId)).subscribe(data => {
+      console.log(data)
 
 
-  ngOnInit() {
-    this.route.params.subscribe(prams => {
-      this.datas = prams
-      console.log(prams)
     })
+
+
+
+  }
+  searchCustomername() {
+    this.redcorduseservice.getCustomerByname(String(this.data.namecus)).subscribe(data => {
+      this.customer = data;
+      console.log(this.customer)
+
+    })
+  }
+  ngOnInit() {
+    this.redcorduseservice.getCustomerByname(String("name1")).subscribe(data => {
+      this.customer = data;
+      console.log(this.customer)
+
+    })
+    // this.route.params.subscribe(prams => {
+    //   this.data = prams
+    //   //console.log(prams)
+    // })
     this.categoryservice.getCategory().subscribe(data => {
       this.category = data;
       console.log(this.category)
     })
-    this.registerservice.getInitials().subscribe(data => {
-      this.Iinitials = data;
-      console.log(this.Iinitials)
-    })
-    this.registerservice.getGenders().subscribe(data => {
-      this.bloodtypes = data;
-      console.log(this.bloodtypes)
-    })
-    this.redcorduseservice.getCustomerById(Number(1)).subscribe(data => {
-      this.customer = data;
-      console.log(this.customer)
-    })
+    // this.registerservice.getInitials().subscribe(data => {
+    //   this.Iinitials = data;
+    //   console.log(this.Iinitials)
+    // })
+    // this.registerservice.getGenders().subscribe(data => {
+    //   this.bloodtypes = data;
+    //   console.log(this.bloodtypes)
+    // })
+
+    // this.redcorduseservice.getCustomerByname(String(this.data.namecus)).subscribe(data => {
+    //   this.bloodtypes = data;
+    //   console.log(this.bloodtypes)
+    // })
+
+    // this.redcorduseservice.getCustomerById(Number(1)).subscribe(data => {
+    //   this.customerall = data;
+    //   console.log(this.customerall)
+    // })
   }
 
 }

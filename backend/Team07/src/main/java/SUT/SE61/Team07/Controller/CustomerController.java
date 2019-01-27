@@ -37,6 +37,26 @@ class CustomerController {
         return customerrepository.findAll().stream().collect(Collectors.toList());
     }
 
+    @GetMapping("/Customer/{customerId}")
+    public Customer customerFind(@PathVariable("customerId") Long id) {
+        return customerrepository.findByCustomerId(id);
+    }
+
+    @GetMapping("/Customer/customeruserID/{customeruserID}")
+    public Customer customeruser(@PathVariable("customeruserID") String name) {
+        return customerrepository.findBycustomerUserID(name);
+    }
+
+    @GetMapping("/Customer/customerPassword/{customerPassword}")
+    public Customer customerpassword(@PathVariable("customerPassword") String password) {
+        return customerrepository.findBycustomerPassword(password);
+    }
+
+    @GetMapping("/Customer/customerName/{customerName}")
+    public Customer customerusername(@PathVariable("customerName") String customerName) {
+        return customerrepository.findBycustomerName(customerName);
+    }
+
     @PostMapping("/Customer-insert/InitalId/{InitalId}/Name/{Name}/GenderId/{GenderId}/BloodTypeId/{BloodTypeId}/Address/{Address}/Phonenumber/{Phonenumber}/Username/{Username}/Password/{Password}")
     public ResponseEntity<Map<String, Object>> cussumbit(@PathVariable("InitalId") Long InitalId,
             @PathVariable("Name") String Name, @PathVariable("GenderId") Long GenderId,
@@ -76,21 +96,6 @@ class CustomerController {
 
         }
 
-    }
-
-    @GetMapping("/Customer/{customerId}")
-    public Customer customerFind(@PathVariable("customerId") Long id) {
-        return customerrepository.findByCustomerId(id);
-    }
-
-    @GetMapping("/Customer/customeruserID/{customeruserID}")
-    public Customer customeruser(@PathVariable("customeruserID") String name) {
-        return customerrepository.findBycustomerUserID(name);
-    }
-
-    @GetMapping("/Customer/customerPassword/{customerPassword}")
-    public Customer customerpassword(@PathVariable("customerPassword") String password) {
-        return customerrepository.findBycustomerPassword(password);
     }
 
     @PostMapping("/Customer/customeruserID/{customeruserID}/customerPassword/{customerPassword}")

@@ -20,18 +20,21 @@ import SUT.SE61.Team07.Entity.*;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 
- class DrugdataController {
+class DrugdataController {
     private DrugdataRepository drugdatarepository;
     private StaffRepository staffrepository;
     private MedicineRepository medicinerepository;
     private CategoryRepository categoryrepository;
+    private CustomerRepository customerrepository;
 
     public DrugdataController(DrugdataRepository drugdatarepository, StaffRepository staffrepository,
-    MedicineRepository medicinerepository, CategoryRepository categoryrepository) {
+            MedicineRepository medicinerepository, CategoryRepository categoryrepository,
+            CustomerRepository customerrepository) {
         this.drugdatarepository = drugdatarepository;
         this.staffrepository = staffrepository;
         this.medicinerepository = medicinerepository;
         this.categoryrepository = categoryrepository;
+        this.customerrepository = customerrepository;
     }
 
     @GetMapping("/Drugdata-list")
@@ -39,9 +42,11 @@ import SUT.SE61.Team07.Entity.*;
         return drugdatarepository.findAll();
     }
 
-    @GetMapping("/Drugdata/{dataID}")
-    public Optional<Drugdata> takeinMedicineDataByid(@PathVariable Long dataID) {
-        return drugdatarepository.findById(dataID);
+    
+
+    @GetMapping("/Drugdata/{drugdataId}")
+    public Drugdata DrugdataFinds(@PathVariable("drugdataId") Long drugdataId) {
+        return drugdatarepository.findByDrugdataId(drugdataId);
     }
 
     @GetMapping("/Medicine")
@@ -85,7 +90,6 @@ import SUT.SE61.Team07.Entity.*;
      */
 
     // =============Medicine=================
-    
 
     /*
      * @PostMapping("/Medicine/addMedicine/{medicineName}") public Medicine
@@ -99,11 +103,11 @@ import SUT.SE61.Team07.Entity.*;
      * categoryRepository.findAll(); }
      */
     /*
-
-    @GetMapping("/Category/{CategoryId}")
-    public Optional<Category> takeinTypeByid(@PathVariable Long categoryId) {
-        return categoryRepository.findById(categoryId);
-    }*/
+     * 
+     * @GetMapping("/Category/{CategoryId}") public Optional<Category>
+     * takeinTypeByid(@PathVariable Long categoryId) { return
+     * categoryRepository.findById(categoryId); }
+     */
     /*
      * @PostMapping("/Category/addCategory/{CategoryName}") public Category
      * newCategory(@PathVariable String categoryName){ Category newCategory = new
