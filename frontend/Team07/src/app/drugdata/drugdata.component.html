@@ -38,24 +38,31 @@
           <form align="center">
             <h2>กรอกรายละเอียดข้อมูลยา</h2>
               
+            <br>
             <mat-form-field>
-              <h4>ชื่อตัวยา:</h4>
-              <input matInput placeholder="" [(ngModel)]="data.namedrug" required name="namedrug" #namedrug>
-            </mat-form-field><br>
-
+              <h4>เลือกยาที่ต้องการ</h4>
+              <mat-select [(ngModel)]="drugselect" name="Dranss">
+                <mat-option *ngFor="let titledrug of drug" [value]="titledrug.drugId">
+                  {{titledrug.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+<br>
+<br>
               <mat-form-field>
-                <h4>ประเภทยา</h4>
+                <h4>ประเภทของยา</h4>
                 <mat-select [(ngModel)]="categoryselect"name="Dran">
-                  <mat-option *ngFor="let titlecat of category" [value]="titlecat.categoryname">
+                  <mat-option *ngFor="let titlecat of category" [value]="titlecat.categoryId">
                     {{titlecat.categoryname}}
                   </mat-option>
                 </mat-select>
               </mat-form-field><br>
-          
+      <br><br>
+
               <mat-form-field>
                 <h4>ตัวยาสำคัญ</h4>
-                <mat-select [(ngModel)]="medicines"name="Drans">
-                  <mat-option *ngFor="let titlemedicine of medicine" [value]="titlemedicine.name">
+                <mat-select [(ngModel)]="medicineselect"name="Drans">
+                  <mat-option *ngFor="let titlemedicine of medicine" [value]="titlemedicine.medicineId">
                     {{titlemedicine.name}}
                   </mat-option>
                 </mat-select>
@@ -67,7 +74,7 @@
               </mat-form-field><br>
                 
                 <pre align="center">
-                  <button mat-raised-button color="primary"  (click)="showdata()">บันทึก</button>
+                  <button mat-raised-button color="primary"  (click)="Savedrugdata()">บันทึก</button>
                 </pre>
           </form>
         </div>
