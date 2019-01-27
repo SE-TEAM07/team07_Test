@@ -41,7 +41,7 @@
         <tr>
             <td>
                 <mat-form-field>
-                    <mat-select placeholder="Initial" [(ngModel)]="data.initial" [(ngModel)]="customers.initialSelect" name="initial" #initial>
+                    <mat-select placeholder="initial" [(ngModel)]="data.initial" [(ngModel)]="customers.initialSelect" name="initial" #initial>
                       <mat-option *ngFor="let initial of initials" [value]="initial.name">
                         {{initial.name}}
                       </mat-option>
