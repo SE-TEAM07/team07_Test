@@ -57,10 +57,10 @@ class CustomerController {
         return customerrepository.findBycustomerName(customerName);
     }
 
-    @PostMapping("/Customer-insert/InitalId/{InitalId}/Name/{Name}/GenderId/{GenderId}/BloodTypeId/{BloodTypeId}/Address/{Address}/Phonenumber/{Phonenumber}/Username/{Username}/Password/{Password}")
+    @PostMapping("/Customer-insert/InitalId/{InitalId}/Name/{Name}/GenderId/{GenderId}/BloodType/{BloodType}/Address/{Address}/Phonenumber/{Phonenumber}/Username/{Username}/Password/{Password}")
     public ResponseEntity<Map<String, Object>> cussumbit(@PathVariable("InitalId") Long InitalId,
             @PathVariable("Name") String Name, @PathVariable("GenderId") Long GenderId,
-            @PathVariable("BloodTypeId") Long BloodTypeId, @PathVariable("Address") String Address,
+            @PathVariable("BloodType") Long BloodType, @PathVariable("Address") String Address,
             @PathVariable("Phonenumber") String Phonenumber, @PathVariable("Username") String Username,
             @PathVariable("Password") String Password) {
 
@@ -68,7 +68,7 @@ class CustomerController {
 
             Initial I = this.initialrepository.findByInitialId(InitalId); // Select
             Gender G = this.genderrepository.findByGenderId(GenderId); // Select
-            BloodType B = this.bloodTyperepository.findByBloodTypeId(BloodTypeId);// Select
+            BloodType B = this.bloodTyperepository.findByBloodTypeId(BloodType);// Select
 
             this.customerrepository.save(new Customer(I, Name, G, B, Address, Phonenumber, Username, Password));
 
