@@ -33,15 +33,23 @@ export class DrugdataComponent implements OnInit {
       console.log(this.data)
     })
   }
+  Savemedicine(){
+    this.drugdataService.MedicinePost(String(this.data.medicinex)).subscribe(data=>{
+      console.log(this.data)
+    })
+
+  }
  
-  // showdata(){
-  //   console.log(this.data.nameexplantion)
-  //   console.log(this.drugselect)
-  //   console.log(this.categoryselect)
-  //   console.log(this.staffId)
-  //   console.log(this.medicineselect)
+  showdata(){
+    console.log(this.data.medicinex)
+
+    // console.log(this.data.nameexplantion)
+    // console.log(this.drugselect)
+    // console.log(this.categoryselect)
+    // console.log(this.staffId)
+    // console.log(this.medicineselect)
     
-  // }
+  }
 
   ngOnInit() {
     this.categoryService.getCategory().subscribe(data=>{
