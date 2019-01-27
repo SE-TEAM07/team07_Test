@@ -61,12 +61,12 @@ public class DatabaseLoader implements ApplicationRunner {
         /*
          * john db loader
          */
-        this.drugrepository.save(new Drug("para1"));
-        this.drugrepository.save(new Drug("para2"));
-        this.drugrepository.save(new Drug("para3"));
-        this.drugrepository.save(new Drug("para4"));
-        this.drugrepository.save(new Drug("para5"));
-        this.drugrepository.save(new Drug("para6"));
+        this.drugrepository.save(new Drug("para"));
+        this.drugrepository.save(new Drug("wellbutrin"));
+        this.drugrepository.save(new Drug("doxycycline"));
+        this.drugrepository.save(new Drug("Prilosec"));
+        this.drugrepository.save(new Drug("Budesonide"));
+        this.drugrepository.save(new Drug("Fluticasone"));
         Drug D1 = this.drugrepository.findByDrugId(1L);
         this.categoryrepository.save(new Category("ABC1"));
         this.categoryrepository.save(new Category("ABC2"));
