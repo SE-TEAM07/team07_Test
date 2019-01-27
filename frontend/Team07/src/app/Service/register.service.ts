@@ -7,8 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
   public API = '//localhost:8080';
-  
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
+
+ 
+
+  Customersumbit(initalId: number, name: string, genderId: number, bloodTypeId: number, address: string, phonenumber: string, username: string, password: string): Observable<any> {
+    console.log(this.API + '/Customer-insert/InitalId/' + initalId + '/Name/' + name + '/GenderId/' + genderId + '/BloodType/' + bloodTypeId + '/Address/' + address + '/Phonenumber/' + phonenumber + '/Username/' + username + '/Password/' + password)
+    return this.http.post(this.API + '/Customer-insert/InitalId/' + initalId + '/Name/' + name + '/GenderId/' + genderId + '/BloodType/' + bloodTypeId + '/Address/' + address + '/Phonenumber/' + phonenumber + '/Username/' + username + '/Password/' + password, {});
+  }
+
 
   getInitials(): Observable<any> {
     return this.http.get(this.API + '/Initial-list');
@@ -19,7 +27,4 @@ export class RegisterService {
   getBloodTypes(): Observable<any> {
     return this.http.get(this.API + '/BloodType-list');
   }
-  Customersumbit(initalId: number, genderId: number, bloodTypeId: number,name: string,address: string,phonenumber: string,username: string,password: string): Observable<any> {
-     return this.http.post(this.API + '/Customer-insert' +  '/initalId/' + initalId+ '/genderId/' +genderId+ '/bloodTypeId/' +bloodTypeId+ '/names/' +name+ '/address/' +address+'/phonenumber/'+phonenumber+'/username/'+username+'/password/'+password, {});
-    }
 }
