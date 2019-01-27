@@ -42,7 +42,7 @@ class CustomerController {
             @PathVariable("Name") String Name, @PathVariable("GenderId") Long GenderId,
             @PathVariable("BloodTypeId") Long BloodTypeId, @PathVariable("Address") String Address,
             @PathVariable("Phonenumber") String Phonenumber, @PathVariable("Username") String Username,
-            @PathVariable(" Password") String Password) {
+            @PathVariable("Password") String Password) {
 
         try {
 
