@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { InputdrugstroageService } from '../Service/inputdrugstroage.service';
 import { ActivatedRoute } from "@angular/router";
 import { DrugService } from '../Service/drug.service';
-
 import { PrescriptionService } from '../Service/prescription.service';
 
 @Component({
@@ -25,7 +24,8 @@ export class DrugStorageMenuComponent implements OnInit {
   datas: any = {}
 
   constructor(private drugService: DrugService, private route: ActivatedRoute, private router: Router, private categoryService: CategoryService, private httpClient: HttpClient, private inputdrugstroageService: InputdrugstroageService, private pre: PrescriptionService) { }
-
+  displayedColumns: string[] = ['position', 'name', 'drugname', 'category','staff'];
+  
   showdata() {
 
     console.log("namepre" + " = " + this.data.namepre)
@@ -38,7 +38,7 @@ export class DrugStorageMenuComponent implements OnInit {
 
   sumbitData() {
 
-    this.inputdrugstroageService.summbituyPrescription(String(this.data.namepre), Number(this.categoryselect), Number(this.categoryselect), Number(this.preId)).subscribe(data => {
+    this.inputdrugstroageService.summbituyPrescription(String(this.data.namepre), Number(this.categoryselect), Number(this.categoryselect), Number(1)).subscribe(data => {
       console.log(this.data)
     })
 
@@ -60,7 +60,11 @@ export class DrugStorageMenuComponent implements OnInit {
     this.pre.getPrescription().subscribe(data => {
       this.prescription = data;
       this.preId = this.prescription.length;
-      // console.log(this.preId)
+      console.log(this.prescription);
+      if(this.preId == "undefined"){
+        this.preId == 1;
+      }
+
     })
     this.drugService.getDrug().subscribe(data => {
       this.drug = data;
