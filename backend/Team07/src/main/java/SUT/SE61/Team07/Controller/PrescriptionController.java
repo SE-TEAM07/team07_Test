@@ -59,6 +59,7 @@ class PrescriptionController {
             headers.add("X-Fsl-Location", "/");
             headers.add("X-Fsl-Response-Code", "302");
             return (new ResponseEntity<Map<String, Object>>(json, headers, HttpStatus.OK));
+
         } catch (NullPointerException e) {
             Map<String, Object> json = new HashMap<String, Object>();
             System.out.println("Error Save CancelReservation");
