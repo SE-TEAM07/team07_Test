@@ -4,6 +4,7 @@ import lombok.*;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
@@ -17,43 +18,44 @@ import javax.validation.constraints.*;
 
 @Entity
 @Data
-public class Prescription {
+public class Drugdata {
 
     @Id
-    @SequenceGenerator(name = "prescription_seq", sequenceName = "prescription_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prescription_seq")
-    @NotNull private  Long PrescriptionId;
+    @SequenceGenerator(name = "drugdata_seq", sequenceName = "drugdata_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "drugdata_seq")
+    @NotNull private  Long drugdataId;
 
-    @NotNull(message="Package Id must not be null to be valid")
-    //@Pattern(regexp = "\\w{0,3}\\d{8,13}TH")
+    @NotNull(message="detail  must not be null to be valid")
     @Size(min = 10, max = 20)
-    private  String preId;
-
-    @NotNull 
-    private  Date date;
-
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "drugId")
-    private Drug drug;
+    private  String detail; //สรรพคุณ
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "staffId")
     private Staff staff;
 
+   
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    public Prescription() {
-    }
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "medicineId")
+    private Medicine medicine;
 
-    public Prescription(String preId, Category category, Drug drug, Staff staff) {
-
-        this.preId = preId;
-        this.category = category;
+    
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "drugId")
+    private Drug drug;
+    
+    public Drugdata(){}
+    
+    public Drugdata (String detail,Drug drug,Staff staff,Category category, Medicine medicine) {
+        this.detail = detail;
         this.drug = drug;
         this.staff = staff;
-        this.date = new Date();
+        this.category = category;
+        this.medicine = medicine;
+        
     }
 
 }

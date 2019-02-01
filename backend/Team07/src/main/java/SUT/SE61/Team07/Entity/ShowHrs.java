@@ -17,41 +17,36 @@ import javax.validation.constraints.*;
 
 @Entity
 @Data
-public class Prescription {
-
+public class ShowHrs {
     @Id
-    @SequenceGenerator(name = "prescription_seq", sequenceName = "prescription_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prescription_seq")
-    @NotNull private  Long PrescriptionId;
+    @SequenceGenerator(name = "showHrs_seq", sequenceName = "showHrs_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showHrs_seq")
 
-    @NotNull(message="Package Id must not be null to be valid")
-    //@Pattern(regexp = "\\w{0,3}\\d{8,13}TH")
-    @Size(min = 10, max = 20)
-    private  String preId;
+    @NotNull(message="showhrs Id must not be null to be valid")
+    private  Long showId;
 
     @NotNull 
     private  Date date;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "drugId")
-    private Drug drug;
+    @JoinColumn(name = "deptId")
+    private Department department;
 
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "timeId")
+    private Worktime worktime;
+
+    
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "staffId")
     private Staff staff;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoryId")
-    private Category category;
-
-    public Prescription() {
+    public ShowHrs() {
     }
 
-    public Prescription(String preId, Category category, Drug drug, Staff staff) {
-
-        this.preId = preId;
-        this.category = category;
-        this.drug = drug;
+    public ShowHrs(Staff staff ,Department department, Worktime worktime) {
+        this.department = department;
+        this.worktime = worktime;
         this.staff = staff;
         this.date = new Date();
     }

@@ -38,7 +38,18 @@ import SUT.SE61.Team07.Entity.*;
 public class Team07ApplicationUnitTests {
 	
 	@Autowired
-	private PrescriptionRepository prescriptionrepository;
+    private PrescriptionRepository prescriptionrepository;
+    @Autowired
+    private DrugdataRepository drugdatarepository;
+    @Autowired
+    private  RecordDrugUseRepository recordDrugUserepository;
+    @Autowired
+    private  CustomerRepository customerrepository;
+    @Autowired
+    private  ShowHrsRepository showHrsrepository;
+    
+
+
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -51,9 +62,9 @@ public class Team07ApplicationUnitTests {
         validator = factory.getValidator();
 	}
 	
-	 //ทดสอบ save data ปกติ
+	 //ทดสอบ save data  Prescription ปกติ
 	 @Test
-	 public void testTestInsertDataSuccess() {
+	 public void testTestInsertPrescriptionDataSuccess() {
 		 Prescription mag = new Prescription();
 		 mag.setPreId("1234567890TH");
 		 mag.setDate(new Date());
@@ -63,13 +74,13 @@ public class Team07ApplicationUnitTests {
 		 } catch(javax.validation.ConstraintViolationException e) {
 			 fail("Should not pass to this line");
 		 }
-	 }
-
-
-	 @Test
-	public void testTestPackageIdSizeLessThan8() {
+     }
+     
+	// ทดสอบห้าม Prescription เป็น  not null
+    @Test
+	public void testTestPrescriptionNotNull() {
         Prescription mag = new Prescription();
-        mag.setPreId("1234TH");
+        mag.setPreId(null);
         mag.setDate(new Date());
         try {
             entityManager.persist(mag);
@@ -78,20 +89,125 @@ public class Team07ApplicationUnitTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            //คาดการว่าจะเกิด error เท้าไร
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
         }
-	}
-	
+    }
 
-	// ทดสอบห้ามเป็น not null
-    @Test
-	public void testTestPackageIdNotNull() {
-        Prescription mag = new Prescription();
-        mag.setPreId(null);
-        mag.setDate(new Date());
+     //ทดสอบ save data  Drugdata ปกติ
+     public void testTestInsertDrugDataSuccess() {
+        Drugdata dd = new Drugdata();
+        dd.setDetail("ABCDEFGH");
         try {
-            entityManager.persist(mag);
+            entityManager.persist(dd);
+            entityManager.flush();
+        } catch(javax.validation.ConstraintViolationException e) {
+            fail("Should not pass to this line");
+        }
+    }
+
+    // ทดสอบห้าม Drugdata เป็น  not null
+    @Test
+	public void testTestDrugdataNotNull() {
+        Drugdata dd = new Drugdata();
+        dd.setDetail(null);
+        
+        try {
+            entityManager.persist(dd);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+
+    
+     //ทดสอบ save Customer   ปกติ
+     public void testTestInsertCustomerDataSuccess() {
+        Customer cc = new Customer();
+        cc.setCustomerName("ABCDEFGH");
+        try {
+            entityManager.persist(cc);
+            entityManager.flush();
+        } catch(javax.validation.ConstraintViolationException e) {
+            fail("Should not pass to this line");
+        }
+    }
+
+    // ทดสอบห้าม Customer เป็น  not null
+    @Test
+	public void testTestCustomerdataNotNull() {
+        Customer cc = new Customer();
+        cc.setCustomerName(null);
+        
+        try {
+            entityManager.persist(cc);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    
+     //ทดสอบ save RecordDrugUse   ปกติ
+     public void testTestInsertRecordDrugUseDataSuccess() {
+        RecordDrugUse rr = new RecordDrugUse();
+        rr.setSymptom("ABCDEFGH");
+        rr.setDate(new Date());
+        try {
+            entityManager.persist(rr);
+            entityManager.flush();
+        } catch(javax.validation.ConstraintViolationException e) {
+            fail("Should not pass to this line");
+        }
+    }
+
+    // ทดสอบห้าม RecordDrugUse เป็น  not null
+    @Test
+	public void testTestRecordDrugUsedataNotNull() {
+        RecordDrugUse rr = new RecordDrugUse();
+        rr.setSymptom(null);
+        rr.setDate(new Date());
+        
+        try {
+            entityManager.persist(rr);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+
+     //ทดสอบ save data  ShowHrs ปกติ
+	 @Test
+	 public void testTestInsertShowHrsDataSuccess() {
+        ShowHrs ss = new ShowHrs();
+        ss.setDate(new Date());
+         //ss.setDate(new Date());
+		 
+		 try {
+			 entityManager.persist(ss);
+			 entityManager.flush();
+		 } catch(javax.validation.ConstraintViolationException e) {
+			 fail("Should not pass to this line");
+		 }
+     }
+     
+	// ทดสอบห้าม ShowHrs เป็น  not null
+    @Test
+	public void testTestShowHrsNotNull() {
+        ShowHrs ss = new ShowHrs();
+           ss.setDate(null);
+        try {
+            entityManager.persist(ss);
             entityManager.flush();
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
