@@ -28,7 +28,7 @@ public class Customer {
 
     @NotNull(message="customerName must not be null to be valid")
    // @Pattern(regexp = "\\w{0,3}\\d{8,13}")
-    @Size(min = 10, max = 20)
+    //@Size(min = 10, max = 20)
     private  String customerName;
 
     private @NonNull String customerPhonenumber;
@@ -36,15 +36,15 @@ public class Customer {
     private @NonNull String customerUserID;
     private @NonNull String customerPassword;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "InitialId")
     private Initial initial;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "genderId")
     private Gender gender;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bloodTypeId")
     private BloodType bloodType;
 

@@ -26,24 +26,24 @@ public class Drugdata {
     @NotNull private  Long drugdataId;
 
     @NotNull(message="detail  must not be null to be valid")
-    @Size(min = 10, max = 20)
+    //@Size(min = 10, max = 20)
     private  String detail; //สรรพคุณ
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "staffId")
     private Staff staff;
 
    
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "medicineId")
     private Medicine medicine;
 
     
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "drugId")
     private Drug drug;
     
