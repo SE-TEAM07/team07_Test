@@ -27,21 +27,21 @@ public class RecordDrugUse {
 
     @NotNull(message = "symptom  must not be null to be valid")
    // @Pattern(regexp = "\\w{0,3}\\d{8,13}")
-    @Size(min = 10, max = 20)
+    //@Size(min = 10, max = 20)
     private String symptom;
 
     @NotNull
     private Date date;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "drugdataId")
     private Drugdata drugdata;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "staffId")
     private Staff staff;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
 

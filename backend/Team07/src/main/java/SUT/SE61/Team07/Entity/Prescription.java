@@ -26,21 +26,21 @@ public class Prescription {
 
     @NotNull(message="Package Id must not be null to be valid")
     //@Pattern(regexp = "\\w{0,3}\\d{8,13}TH")
-    @Size(min = 10, max = 20)
+    //@Size(min = 10, max = 20)
     private  String preId;
 
     @NotNull 
     private  Date date;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "drugId")
     private Drug drug;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "staffId")
     private Staff staff;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
     private Category category;
 
